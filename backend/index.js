@@ -16,7 +16,10 @@ app.get('/ping', (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:5000',
+    credentials: true,
+}));
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/expenses', ensureAuthenticated, ExpenseRouter)
