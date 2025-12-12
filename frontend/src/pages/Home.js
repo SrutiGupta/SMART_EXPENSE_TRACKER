@@ -6,6 +6,7 @@ import ExpenseTable from './ExpenseTable';
 import ExpenseDetails from './ExpenseDetails';
 import ExpenseForm from './ExpenseForm';
 import PieChart from './PieChart';
+import ExpenseTrendsChart from './ExpenseTrendsChart';
 
 function Home() {
     const [loggedInUser, setLoggedInUser] = useState('');
@@ -119,7 +120,10 @@ function Home() {
         <div className="home-page-container">
             {/* Header with Welcome message centered and Logout button in top-right */}
             <div className="home-header">
-                <h1 className="welcome-text">Welcome {loggedInUser}</h1>
+                <h1 className="welcome-text">
+                    <span style={{ color: '#8a2be2' }}>Welcome</span>{' '}
+                    <span style={{ color: '#333' }}>{loggedInUser}</span>
+                </h1>
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
             </div>
 
@@ -141,11 +145,18 @@ function Home() {
                     />
                 </div>
 
-                {/* Right column - Pie chart */}
+                {/* Right column - Charts */}
                 <div className="right-content">
+                    {/* Pie Chart */}
                     <div className="chart-container">
                         <h2>Income vs Expense</h2>
                         <PieChart income={incomeAmt} expense={expenseAmt} />
+                    </div>
+
+                    {/* Expense Trends Chart */}
+                    <div className="chart-container">
+                        <h2>Expense Trends</h2>
+                        <ExpenseTrendsChart expenses={expenses} />
                     </div>
                 </div>
             </div>

@@ -57,13 +57,13 @@ function PieChart({ income, expense }) {
     };
 
     return (
-        <div style={{ width: '100%', height: '100%', maxWidth: '400px', margin: '0 auto' }}>
+        <div style={{ width: '100%', height: '100%', maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
             {income > 0 || expense > 0 ? (
                 <Pie data={data} options={options} />
             ) : (
-                <div style={{ 
-                    textAlign: 'center', 
-                    padding: '40px 20px', 
+                <div style={{
+                    textAlign: 'center',
+                    padding: '40px 20px',
                     color: '#999',
                     fontStyle: 'italic'
                 }}>
