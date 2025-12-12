@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import ExpenseTable from './ExpenseTable';
 import ExpenseDetails from './ExpenseDetails';
 import ExpenseForm from './ExpenseForm';
+import PieChart from './PieChart';
 
 function Home() {
     const [loggedInUser, setLoggedInUser] = useState('');
@@ -115,23 +116,40 @@ function Home() {
     }, [])
 
     return (
-        <div>
-            <div className='user-section'>
-                <h1>Welcome {loggedInUser}</h1>
-                <button onClick={handleLogout}>Logout</button>
+        <div className="home-page-container">
+            {/* Header with Welcome message centered and Logout button in top-right */}
+            <div className="home-header">
+                <h1 className="welcome-text">Welcome {loggedInUser}</h1>
+                <button className="logout-button" onClick={handleLogout}>Logout</button>
             </div>
-            <ExpenseDetails
-                incomeAmt={incomeAmt}
-                expenseAmt={expenseAmt}
-            />
 
-            <ExpenseForm
-                addTransaction={addTransaction} />
+            {/* Two-column layout */}
+            <div className="home-content-wrapper">
+                {/* Left column - Main content (70%) */}
+                <div className="left-content">
+                    <ExpenseDetails
+                        incomeAmt={incomeAmt}
+                        expenseAmt={expenseAmt}
+                    />
 
-            <ExpenseTable
-                expenses={expenses}
-                deleteExpens={deleteExpens}
-            />
+                    <ExpenseForm
+                        addTransaction={addTransaction} />
+
+                    <ExpenseTable
+                        expenses={expenses}
+                        deleteExpens={deleteExpens}
+                    />
+                </div>
+
+                {/* Right column - Pie chart */}
+                <div className="right-content">
+                    <div className="chart-container">
+                        <h2>Income vs Expense</h2>
+                        <PieChart income={incomeAmt} expense={expenseAmt} />
+                    </div>
+                </div>
+            </div>
+
             <ToastContainer />
         </div>
     )

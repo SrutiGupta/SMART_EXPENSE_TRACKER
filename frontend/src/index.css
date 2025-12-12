@@ -15,12 +15,135 @@ html,
 body{
   height: 100vh;
   width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-body{
+/* Full-width layout for Home page */
+.home-page-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+/* Header with centered welcome text and logout button in top-right */
+.home-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
+}
+
+.logout-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #e74c3c;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
+/* Two-column layout wrapper */
+.home-content-wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Left content area */
+.left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Right content area - Chart container */
+.right-content {
+  position: sticky;
+  top: 20px;
+}
+
+.chart-container {
+  background-color: white;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+.chart-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+}
+
+.chart-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.chart-placeholder p {
+  color: #999;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+  .home-content-wrapper {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .right-content {
+    position: static;
+  }
+
+  .welcome-text {
+    font-size: 22px;
+  }
+
+  .logout-button {
+    position: static;
+    transform: none;
+    margin-left: auto;
+  }
+
+  .home-header {
+    justify-content: space-between;
+  }
 }
 
 .container{
@@ -28,8 +151,7 @@ body{
   padding: 32px 48px;
   border-radius: 10px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .container > h1{
@@ -118,6 +240,10 @@ button:active {
 /* Minimal styling for the expense list */
 .expense-list {
   font-family: Arial, sans-serif;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .expense-item {
@@ -145,13 +271,30 @@ button:active {
   background-color: #c0392b;
 }
 
+/* Expense Details styling */
+.left-content > div:first-child {
+  background-color: white;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-content > div:first-child > div:first-child {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
 .amounts-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 20px 0;
   font-family: Arial, sans-serif;
   font-size: 18px;
+  gap: 20px;
 }
 
 .income-amount {
