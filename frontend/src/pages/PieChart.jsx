@@ -30,13 +30,14 @@ function PieChart({ income, expense }) {
     const options = {
         responsive: true,
         maintainAspectRatio: true,
+        aspectRatio: 1.5,
         plugins: {
             legend: {
                 position: 'bottom',
                 labels: {
-                    padding: 15,
+                    padding: 10,
                     font: {
-                        size: 14,
+                        size: 12,
                         weight: '600',
                     },
                 },
@@ -57,7 +58,7 @@ function PieChart({ income, expense }) {
     };
 
     return (
-        <div style={{ width: '100%', height: '100%', maxWidth: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
+        <div style={{ width: '100%', maxWidth: '450px', margin: '0 auto', boxSizing: 'border-box' }}>
             {income > 0 || expense > 0 ? (
                 <Pie data={data} options={options} />
             ) : (
